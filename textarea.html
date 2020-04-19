@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Faking Textarea on Typing</title>
+</head>
+<style>
+    body {
+        text-align: center;
+        background: aqua;
+        color: black;
+    }
+</style>
+<body onload="on()">
+<h2>Type anthing slowly</h2>
+<form name="text">
+<textarea name="txt" cols="50px" rows="10px">
+</textarea>
+</form>
+<script>
+    // Tạo mảng với kí tự mặc định hiện ra
+    let a = new Array(), n = ""
+    a[1] = 'M';
+    a[2] = 'Y';
+    a[3] = ' ';
+    a[4] = 'N';
+    a[5] = 'A';
+    a[6] = 'M';
+    a[7] = 'E';
+    a[8] = ' ';
+    a[9] = 'I';
+    a[10] = 'S';
+    a[11] = ' ';
+    a[12] = 'T';
+    a[13] = 'H';
+    a[14] = 'A';
+    a[15] = 'N';
+    a[16] = 'G';
+    a[17] = ' ';
+
+    // tạo hàm lặp lại mảng trên
+    function repeat() {
+        let t = document.text.txt.value;
+        let j = t.length;
+        if (j > 0) {
+            for (let i = 1; i <= j; i++) {
+                n = n + a[i]
+                if (i == 17) {
+                    document.text.txt.value = "";
+                    n = "";
+                }
+            }
+        }
+        document.text.txt.value = n;
+        n = "";
+        setTimeout("repeat()", 1);
+    }
+
+    function on() {
+        repeat();
+    }
+</script>
+</body>
+</html>
